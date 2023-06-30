@@ -8,6 +8,7 @@ from .battery.spindle_battery import SpindleBattery
 
 
 class CarFactory:
+    @staticmethod
     def create_calliope(
         current_date: date,
         last_service_date: date,
@@ -20,6 +21,7 @@ class CarFactory:
         new_car: Car = Car(new_engine, new_battery)
         return new_car
 
+    @staticmethod
     def create_glissasde(
         current_date: date,
         last_service_date: date,
@@ -32,6 +34,7 @@ class CarFactory:
         new_car: Car = Car(new_engine, new_battery)
         return new_car
 
+    @staticmethod
     def create_palindrome(
         current_date: date, last_service_date: date, warning_light_is_on: bool
     ) -> Car:
@@ -41,6 +44,7 @@ class CarFactory:
         new_car: Car = Car(new_engine, new_battery)
         return new_car
 
+    @staticmethod
     def create_rorschach(
         current_date: date,
         last_service_date: date,
@@ -53,6 +57,7 @@ class CarFactory:
         new_car: Car = Car(new_engine, new_battery)
         return new_car
 
+    @staticmethod
     def create_thovex(
         current_date: date,
         last_service_date: date,
