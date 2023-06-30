@@ -14,6 +14,7 @@ class CarFactory:
         last_service_date: date,
         current_mileage: int,
         last_service_mileage: int,
+        sensor_reading: list(int),
     ) -> Car:
         new_engine = CapuletEngine(current_mileage, last_service_mileage)
         new_battery = SpindleBattery(last_service_date)
@@ -27,6 +28,7 @@ class CarFactory:
         last_service_date: date,
         current_mileage: int,
         last_service_mileage: int,
+        sensor_reading: list(int),
     ) -> Car:
         new_engine = WilloughbyEngine(current_mileage, last_service_mileage)
         new_battery = SpindleBattery(last_service_date)
@@ -36,7 +38,10 @@ class CarFactory:
 
     @staticmethod
     def create_palindrome(
-        current_date: date, last_service_date: date, warning_light_is_on: bool
+        current_date: date,
+        last_service_date: date,
+        warning_light_is_on: bool,
+        sensor_reading: list(int),
     ) -> Car:
         new_engine = SternmanEngine(warning_light_is_on)
         new_battery = SpindleBattery(last_service_date)
@@ -50,6 +55,7 @@ class CarFactory:
         last_service_date: date,
         current_mileage: int,
         last_service_mileage: int,
+        sensor_reading: list(int),
     ) -> Car:
         new_engine = WilloughbyEngine(current_mileage, last_service_mileage)
         new_battery = NubbinBattery(last_service_date)
@@ -63,6 +69,7 @@ class CarFactory:
         last_service_date: date,
         current_mileage: int,
         last_service_mileage: int,
+        sensor_reading: list(int),
     ) -> Car:
         new_engine = CapuletEngine(current_mileage, last_service_mileage)
         new_battery = NubbinBattery(last_service_date)

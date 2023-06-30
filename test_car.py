@@ -1,17 +1,13 @@
 import unittest
 from datetime import datetime
 
-from engine.model.calliope import Calliope
-from engine.model.glissade import Glissade
-from engine.model.palindrome import Palindrome
-from engine.model.rorschach import Rorschach
-from engine.model.thovex import Thovex
-
 from engine.capulet_engine import CapuletEngine
 from engine.sternman_engine import SternmanEngine
 from engine.willoughby_engine import WilloughbyEngine
 from battery.nubbin_battery import NubbinBattery
 from battery.spindle_battery import SpindleBattery
+from tire.carrigan_tire import CarriganTire
+from tire.octoprime_tire import OctoprimeTire
 
 
 class TestCapulet(unittest.TestCase):
@@ -69,6 +65,7 @@ class TestNubbin(unittest.TestCase):
         car = NubbinBattery(last_service_date)
         self.assertFalse(car.needs_service())
 
+
 class TestSpindle(unittest.TestCase):
     def test_should_be_serviced(self):
         today = datetime.today().date()
@@ -83,6 +80,37 @@ class TestSpindle(unittest.TestCase):
 
         car = SpindleBattery(last_service_date)
         self.assertFalse(car.needs_service())
+
+
+class TestCarrigan(unittest.TestCase):
+    def test_wrong_array_size(self):
+        self.assertRaises(IndexError, CarriganTire, [1, 1, 1, 1, 1])
+
+    def test_wrong_array_input(self):
+        self.assertRaises(ValueError, CarriganTire, [1, 1, 1.1, 1])
+
+    def test_needs_service_true(self):
+        tire = CarriganTire([0.8, 0.9, 0.8, 1])
+        self.assertTrue(tire.needs_service())
+    
+    def test_needs_service_false(self):
+        tire = CarriganTire([0.8, 0.89, 0.8, 0.4])
+        self.assertFalse(tire.needs_service())
+
+class TestOctoprime(unittest.TestCase):
+    def test_wrong_array_size(self):
+        self.assertRaises(IndexError, OctoprimeTire, [1, 1, 1, 1, 1])
+
+    def test_wrong_array_input(self):
+        self.assertRaises(ValueError, OctoprimeTire, [1, 1, 1.1, 1])
+
+    def test_needs_service_true(self):
+        tire = OctoprimeTire([0.8, 0.9, 0.8, 1])
+        self.assertTrue(tire.needs_service())
+    
+    def test_needs_service_false(self):
+        tire = OctoprimeTire([0.8, 0.89, 0.8, 0.4])
+        self.assertFalse(tire.needs_service())
 
 
 if __name__ == "__main__":
